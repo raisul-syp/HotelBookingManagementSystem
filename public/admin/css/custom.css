@@ -1,0 +1,43 @@
+.page-header-title {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #593bdb;
+}
+
+.card-header {
+    border-bottom: 1px solid #593bdb !important;
+    padding: 1rem !important;
+}
+
+.card-footer {
+    border-top: 1px solid #593bdb !important;
+}
+
+.form-title h4 {
+    margin-bottom: 0;
+}
+
+.data-table-image {
+    width: 50px;
+}
+
+.pagination-section .pagination {
+    justify-content: end;
+}
+
+.form-control {
+    border-radius: 0 !important;
+}
+
+.image-preview {
+    margin-top: 20px;
+}
+
+.image-preview img.preview-img {
+    border: 1px solid #593bdb;
+    padding: 5px;
+    width: 100%;
+    height: auto;
+}
