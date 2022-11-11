@@ -41,3 +41,42 @@
     width: 100%;
     height: auto;
 }
+
+.btn.btn-icon {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    line-height: 28px;
+}
+
+.list-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.table {
+    color: #505050 !important;
+}
+
+.table-hover tbody tr:hover {
+    color: #505050 !important;
+}
+
+body {
+    color: #505050 !important;
+}
+
+.room-facilities {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 20px;
+    padding: 5px;
+    background: #343957;
+    border: 1px solid #343957;
+    border-radius: 3px;
+}
+
+.room-facilities img {
+    width: 100%;
+}

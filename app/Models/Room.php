@@ -22,7 +22,7 @@ class Room extends Model
         'long_description',
         'quantity',
         'price',
-        'room_facility',
+        // 'room_facility',
         'meta_title',
         'meta_keyword',
         'meta_decription',
@@ -35,15 +35,20 @@ class Room extends Model
     // public function roomtype()
     // {
     //     return $this->belongsTo(Roomtype::class, 'roomtype_id', 'id');
-    // }        
+    // }
 
     public function roomImages()
     {
         return $this->hasMany(RoomImage::class, 'room_id', 'id');
     }
 
-    public function roomFacilities()
+    // public function roomFacilities()
+    // {
+    //     return $this->belongsToMany(RoomFacility::class, 'room_id', 'facility_id');
+    // }
+
+    public function facilities()
     {
-        return $this->belongsToMany(RoomFacility::class, 'room_id', 'facility_id');
+        return $this->belongsToMany(Facility::class, 'hb_room_facilities');
     }
 }

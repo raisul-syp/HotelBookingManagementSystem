@@ -3,7 +3,13 @@ window.addEventListener('close-modal', event => {
 });
 
 
-
 $(document).ready(function() {
     $('.js-basic-single').select2();
+
+
+    feather.replace();
+
+    $('[data-toggle="tooltip"]').tooltip();
 });
+
+
