@@ -26,8 +26,7 @@ class Facility extends Model
         'updated_by',
     ];
 
-    public function rooms()
-    {
-        return $this->hasMany(Room::class, 'facility_id', 'id');
+    public function rooms(){
+        return $this->belongsToMany(Room::class, 'hb_room_facilities');
     }
 }

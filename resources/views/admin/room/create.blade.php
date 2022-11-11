@@ -84,29 +84,13 @@
                     <div class="card-body">
                         <div class="tab-content tabcontent-border">
                             <div class="tab-pane fade active show" id="room_info" role="tabpanel">
-                                {{-- <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="roomtype_id">
-                                        {{ __('Room Type') }}
-                                        <small class="text-danger">*</small>
-                                    </label>
-                                    <div class="col-sm-10 selects-contant">
-                                        <select class="form-control js-basic-single" name="roomtype_id" id="roomtype_id">
-                                            @foreach ($roomtypes as $roomtype)
-                                            <option value="{{ $roomtype->id }}">{{ $roomtype->name }}</option>                                                
-                                            @endforeach
-                                        </select>                 
-                                        @error('roomtype_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div> --}}
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="name">
                                         {{ __('Name') }}
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Add Name...">                        
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Add Name...">
                                         @error('name')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -118,7 +102,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Add Slug...">                        
+                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Add Slug...">
                                         @error('slug')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -130,7 +114,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="short_description" name="short_description" rows="3" placeholder="Add Short Description..."></textarea>               
+                                        <textarea class="form-control" id="short_description" name="short_description" rows="3" placeholder="Add Short Description..."></textarea>
                                         @error('short_description')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -163,6 +147,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="room_facility" role="tabpanel">
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="facilities">
@@ -173,31 +158,14 @@
                                         <div class="form-check mb-2">
                                             <input type="checkbox" class="form-check-input" name="facilities[]" value="{{ $facilityItem->id }}">
                                             <label class="form-check-label">{{ $facilityItem->name }}</label>
-                                        </div> 
+                                        </div>
                                         @empty
                                         <h6>No Facilities Found!</h6>
                                         @endforelse
                                     </div>
                                 </div>
-
-
-                                
-                                {{-- <div class="form-group row mb-0">
-                                    <div class="col-sm-2 col-form-label text-right" for="room_facility">
-                                        {{ __('Facility') }}
-                                    </div>
-                                    <div class="col-sm-10">
-                                        @forelse ($facilities as $facilityItem)
-                                        <div class="form-check mb-2">
-                                            <input type="checkbox" class="form-check-input" name="room_facility[]" id="room_facility{{ $facilityItem->id }}" value="{{ $facilityItem->id }}">
-                                            <label class="form-check-label" for="room_facility{{ $facilityItem->id }}">{{ $facilityItem->name }}</label>
-                                        </div> 
-                                        @empty
-                                        <h6>No Facilities Found!</h6>
-                                        @endforelse
-                                    </div>
-                                </div> --}}
                             </div>
+
                             <div class="tab-pane fade" id="room_image" role="tabpanel">
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="image">{{ __('Image') }}</div>
@@ -209,6 +177,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="tab-pane fade" id="room_seo" role="tabpanel">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="meta_title">
@@ -216,7 +185,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Add Meta Title...">                        
+                                        <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Add Meta Title...">
                                         @error('meta_title')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -228,7 +197,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" placeholder="Add Meta Keyword...">                        
+                                        <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" placeholder="Add Meta Keyword...">
                                         @error('meta_keyword')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -240,8 +209,8 @@
                                         <textarea class="form-control" id="meta_decription" name="meta_decription" rows="4" placeholder="Add Meta Description..."></textarea>
                                     </div>
                                 </div>
-                                
-                                <input type="text" hidden id="created_by" name="created_by" value="{{ Auth::user()->role_as }}">  
+
+                                <input type="text" hidden id="created_by" name="created_by" value="{{ Auth::user()->role_as }}">
                             </div>
                         </div>
                     </div>

@@ -49,18 +49,10 @@ class RoomFormRequest extends FormRequest
             'price' => [
                 'nullable'
             ],
-            // 'room_facility' => [
-            //     'nullable',
-            //     // 'string'
-            // ],
             'image' => [
                 'nullable',
                 // 'image|mimes:jpg,jpeg,png'
             ],
-            // 'facilities' => [
-            //     'nullable',
-            //     // 'integer'
-            // ],
             'is_active' => [
                 'nullable'
             ],
