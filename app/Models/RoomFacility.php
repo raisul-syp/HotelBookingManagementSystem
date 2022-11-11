@@ -16,8 +16,6 @@ class RoomFacility extends Model
         'room_id',
         'facility_id',
     ];
-    
-    
 
     public function room()
     {

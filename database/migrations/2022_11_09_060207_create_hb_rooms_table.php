@@ -21,8 +21,7 @@ class CreateHbRoomsTable extends Migration
             $table->longText('long_description')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('price')->nullable();
-            $table->string('room_facility')->nullable();
-            
+
             $table->string('meta_title');
             $table->string('meta_keyword');
             $table->mediumText('meta_decription')->nullable();

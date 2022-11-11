@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.png') }}">
 
@@ -13,27 +13,27 @@
     <link rel="stylesheet" href="{{ asset('admin/vendor/pg-calendar/css/pignose.calendar.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendor/chartist/css/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendor/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin//css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin//css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     @livewireStyles
 </head>
 <body>
     <div id="preloader">
         @include('layouts.inc.admin.loader')
     </div>
-        
-    <div id="main-wrapper">        
+
+    <div id="main-wrapper">
         <div class="nav-header">
             @include('layouts.inc.admin.header')
         </div>
 
         <div class="header">
-            @include('layouts.inc.admin.navbar')</div>   
+            @include('layouts.inc.admin.navbar')</div>
 
         <div class="quixnav">
             @include('layouts.inc.admin.sidebar')
         </div>
-        
+
         <div class="content-body">
             @yield('content')
         </div>
@@ -43,7 +43,7 @@
         </div>
 
     </div>
-                                
+
 
     {{-- Scripts --}}
     <script src="{{ asset('admin/vendor/global/global.min.js') }}"></script>
@@ -52,11 +52,10 @@
     <script src="{{ asset('admin/js/site.js') }}"></script>
 
     <script src="{{ asset('admin/vendor/chartist/js/chartist.min.js') }}"></script>
-
     <script src="{{ asset('admin/vendor/moment/moment.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/pg-calendar/js/pignose.calendar.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/select2/js/select2.full.min.js') }}"></script>
-
+    <script src="{{ asset('admin/icons/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin/js/dashboard/dashboard-2.js') }}"></script>
     @livewireScripts
     {{-- @stack('script') --}}
