@@ -17,7 +17,7 @@
             <a href="{{ url('admin/room/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Room') }}</a>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             @if (session('message'))
@@ -32,7 +32,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Facility Table</h4>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover table-responsive-sm">
@@ -60,10 +60,14 @@
                                     <td>{{ $room->name }}</td>
                                     <td>{{ $room->slug }}</td>
                                     <td>
-                                        @if ($room->facility)
-                                            {{ $room->facility->name }}
-                                        @else
-                                            No Category                                
+                                        @if($room->facilities)
+                                        @foreach ($room->facilities as $facility)
+                                            <div class="room-facilities" data-toggle="tooltip" data-placement="top" title="{{ $facility->name }}">
+                                            @if ($facility->image != null)
+                                                <img src="{{ asset('uploads/facilities/'.$facility->image) }}" class="data-table-image">
+                                            @endif
+                                            </div>
+                                        @endforeach
                                         @endif
                                     </td>
                                     <td>{{ $room->quantity }}</td>
@@ -76,21 +80,21 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <span>
-                                            <a href="{{ url('admin/room/edit/'.$room->id) }}" class="btn btn-square btn-outline-warning">Edit</a>
+                                        <span data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <a href="{{ url('admin/room/edit/'.$room->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i data-feather="edit"></i></a>
                                         </span>
-                                        <span>
-                                            <a href="#" wire:click="deleteRecord({{ $room->id }})" class="btn btn-square btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                                        <span data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <a href="#" wire:click="deleteRecord({{ $room->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i data-feather="trash-2"></i></a>
                                         </span>
                                         @include('modal.admin.delete')
                                     </td>
-                                </tr>                        
+                                </tr>
                                 @empty
                                 <tr>
                                     <td colspan="8">
                                         <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                                     </td>
-                                </tr>                        
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
