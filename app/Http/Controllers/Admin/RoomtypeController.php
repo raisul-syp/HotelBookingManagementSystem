@@ -12,8 +12,7 @@ class RoomtypeController extends Controller
 {
     public function index()
     {
-        $roomtypes = Roomtype::all()->where('is_delete','1');
-        return view('admin.roomtype.index', compact('roomtypes'));
+        return view('admin.roomtype.index');
     }
 
     public function create()
@@ -28,15 +27,13 @@ class RoomtypeController extends Controller
         $roomtype = new Roomtype();
 
         $roomtype->name = $validatedData['name'];
-        $roomtype->slug = Str::slug($validatedData['name']) ;
+        $roomtype->slug = Str::slug($validatedData['slug']) ;
         $roomtype->description = $validatedData['description'];
         $roomtype->meta_title = $validatedData['meta_title'];
         $roomtype->meta_keyword = $validatedData['meta_keyword'];
         $roomtype->meta_decription = $validatedData['meta_decription'];
         $roomtype->is_active =  $request->is_active == true ? '1':'0';
-        // $roomtype->is_delete =  $validatedData['is_delete'];
         $roomtype->created_by = $validatedData['created_by'];
-        // $roomtype->updated_by = $validatedData['updated_by'];
         $roomtype->save();
 
         return redirect('admin/roomtype')->with('message','Congratulations! New Room Type Has Been Created Successfully.');
@@ -59,8 +56,7 @@ class RoomtypeController extends Controller
         $roomtype->meta_title = $validatedData['meta_title'];
         $roomtype->meta_keyword = $validatedData['meta_keyword'];
         $roomtype->meta_decription = $validatedData['meta_decription'];
-        $roomtype->is_active = $request->is_active == true ? '1':'0';             
-        // $roomtype->created_by = $validatedData['created_by'];
+        $roomtype->is_active = $request->is_active == true ? '1':'0'; 
         $roomtype->updated_by = $validatedData['updated_by'];
         $roomtype->update();
 

@@ -15,14 +15,12 @@ class Room extends Model
     protected $table = 'hb_rooms';
 
     protected $fillable = [
-        // 'roomtype_id',
         'name',
         'slug',
         'short_description',
         'long_description',
         'quantity',
         'price',
-        // 'room_facility',
         'meta_title',
         'meta_keyword',
         'meta_decription',
@@ -40,5 +38,10 @@ class Room extends Model
     public function facilities()
     {
         return $this->belongsToMany(Facility::class, 'hb_room_facilities');
+    }
+
+    public function roomViews()
+    {
+        return $this->belongsToMany(Roomtype::class, 'hb_roomtype_view');
     }
 }

@@ -41,6 +41,16 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#room_facility">
+                                    <span>
+                                        <strong>
+                                            <i class="ti-info"></i>
+                                            <span class="ml-2">{{ __('Facilities') }}</span>
+                                        </strong>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#room_image">
                                     <span>
                                         <strong>
@@ -130,19 +140,47 @@
                             </div>
 
                             <div class="tab-pane fade" id="room_facility" role="tabpanel">
-                                <div class="form-group row mb-0">
-                                    <div class="col-sm-2 col-form-label text-right" for="facilities">
-                                        {{ __('Facility') }}
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label text-right" for="roomViews">
+                                        {{ __('Room View') }}
                                     </div>
                                     <div class="col-sm-10">
-                                        @forelse ($facilities as $facilityItem)
+                                        @forelse ($views as $roomViewItem)
+                                        @if($room->roomViews->contains('id', $roomViewItem->id))
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" name="roomViews[]" value="{{ $roomViewItem->id }}" checked>
+                                            <label class="form-check-label">{{ $roomViewItem->name }}</label>
+                                        </div>
+                                        @else
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" name="roomViews[]" value="{{ $roomViewItem->id }}">
+                                            <label class="form-check-label">{{ $roomViewItem->name }}</label>
+                                        </div>
+                                        @endif                                             
+                                        @empty
+                                            No Records Found
+                                        @endforelse
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-sm-2 col-form-label text-right" for="facilities">
+                                        {{ __('Room Facility') }}
+                                    </div>
+                                    <div class="col-sm-10">                                        
+                                        @foreach($facilities as $facilityItem)
+                                        @if($room->facilities->contains('id', $facilityItem->id))
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" name="facilities[]" value="{{ $facilityItem->id }}" checked>
+                                            <label class="form-check-label">{{ $facilityItem->name }}</label>
+                                        </div>
+                                        @else
                                         <div class="form-check mb-2">
                                             <input type="checkbox" class="form-check-input" name="facilities[]" value="{{ $facilityItem->id }}">
                                             <label class="form-check-label">{{ $facilityItem->name }}</label>
                                         </div>
-                                        @empty
-                                        <h6>No Facilities Found!</h6>
-                                        @endforelse
+                                        @endif 
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
