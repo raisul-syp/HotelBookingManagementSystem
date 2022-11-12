@@ -56,3 +56,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function (){
         // Route::post('room-image/delete/{room_image_id}', 'destroyImage');
     });
 });
+
+
+
+
