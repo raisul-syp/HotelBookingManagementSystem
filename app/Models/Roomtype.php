@@ -25,8 +25,7 @@ class Roomtype extends Model
         'updated_by',
     ];
 
-    public function rooms()
-    {
-        return $this->hasMany(Room::class, 'roomtype_id', 'id'); 
+    public function roomtypeviews(){
+        return $this->belongsToMany(Room::class, 'hb_roomtype_view');
     }
 }

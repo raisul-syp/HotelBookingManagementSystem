@@ -53,7 +53,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function (){
         Route::post('/', 'store');
         Route::get('/edit/{room}', 'edit');
         Route::put('/edit/{room}', 'update');
-        // Route::post('room-image/delete/{room_image_id}', 'destroyImage');
     });
 });
 

@@ -19,15 +19,14 @@ class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = Room::all()->where('is_delete','1');
-        return view('admin.room.index', compact('rooms'));
-
+        return view('admin.room.index');
     }
 
     public function create()
     {
         $facilities = Facility::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.room.create', compact('facilities'));
+        $views = Roomtype::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.room.create', compact('facilities','views'));
     }
 
     public function store(RoomFormRequest $request)
@@ -54,6 +53,8 @@ class RoomController extends Controller
         $facilities = Facility::find($request->facilities);
         $room->facilities()->sync($facilities);
 
+        $views = Roomtype::find($request->roomViews);
+        $room->roomViews()->sync($views);
 
         if($request->hasFile('image')){
             $uploadPath = 'uploads/rooms/';
@@ -77,68 +78,81 @@ class RoomController extends Controller
 
     public function edit(int $room_id)
     {
-        $roomtypes = Roomtype::all()->where('is_active','1')->where('is_delete','1');
+        // $roomtypes = Roomtype::all()->where('is_active','1')->where('is_delete','1');
         $room = Room::findOrFail($room_id);
-        return view('admin.room.edit', compact('room','roomtypes'));
+        $facilities = Facility::all()->where('is_active','1')->where('is_delete','1');
+        $roomFacilities = $room->facilities();
+        $views = Roomtype::all()->where('is_active','1')->where('is_delete','1');
+        $roomViews = $room->roomViews();
+        return view('admin.room.edit', compact('room','facilities','roomFacilities','views','roomViews'));
     }
 
     public function update(RoomFormRequest $request, int $room_id)
     {
         $validatedData = $request->validated();
 
-        $room = Roomtype::findOrFail($validatedData['roomtype_id'])->rooms()->where('id',$room_id)->first();
+        $room = Room::findOrFail($room_id);
 
-        if($room){
-            $room->update([
-                'roomtype_id' => $validatedData['roomtype_id'],
-                'name' => $validatedData['name'],
-                'slug' => Str::slug($validatedData['slug']),
-                'short_description' => $validatedData['short_description'],
-                'long_description' => $validatedData['long_description'],
-                'quantity' => $validatedData['quantity'],
-                'price' => $validatedData['price'],
+        $room->name = $validatedData['name'];
+        $room->slug = $validatedData['slug'];
+        $room->short_description = $validatedData['short_description'];
+        $room->long_description = $validatedData['long_description'];
+        $room->quantity = $validatedData['quantity'];
+        $room->price = $validatedData['price'];
 
-                'meta_title' => $validatedData['meta_title'],
-                'meta_keyword' => $validatedData['meta_keyword'],
-                'meta_decription' => $validatedData['meta_decription'],
+        $room->meta_title = $validatedData['meta_title'];
+        $room->meta_keyword = $validatedData['meta_keyword'];
+        $room->meta_decription = $validatedData['meta_decription'];
 
-                'is_active' => $request->is_active == true ? '1':'0',
-                'updated_by' => $validatedData['updated_by'],
-            ]);
+        $room->is_active = $request->is_active == true ? '1':'0';
+        $room->updated_by = $validatedData['updated_by'];
+        $room->update();
 
+        $facilities = Facility::find($request->facilities);
+        $room->facilities()->sync($facilities);
 
-            if($request->hasFile('image')){
-                $uploadPath = 'uploads/rooms/';
+        $views = Roomtype::find($request->roomViews);
+        $room->roomViews()->sync($views);
 
-                $i = 1;
-                foreach($request->file('image') as $imageFile){
-                    $extension = $imageFile->getClientOriginalExtension();
-                    $filename =  $room->slug.'-'.time().'-'.$i++.'.'.$extension;
-                    $imageFile->move($uploadPath,$filename);
-                    $finalImagePathName = $uploadPath.$filename;
+        if($request->hasFile('image')){
+            $uploadPath = 'uploads/rooms/';
 
-                    $room->roomImages()->create([
-                        'room_id' => $room->id,
-                        'image' => $finalImagePathName,
-                    ]);
-                }
+            $i = 1;
+            foreach($request->file('image') as $imageFile){
+                $extension = $imageFile->getClientOriginalExtension();
+                $filename =  $room->slug.'-'.time().'-'.$i++.'.'.$extension;
+                $imageFile->move($uploadPath,$filename);
+                $finalImagePathName = $uploadPath.$filename;
+
+                $room->roomImages()->create([
+                    'room_id' => $room->id,
+                    'image' => $finalImagePathName,
+                ]);
             }
+        }
 
-            return redirect('admin/room')->with('message','Congratulations! New Room Has Been Updated Successfully.');
-        }
-        else{
-            return redirect('admin/room')->with('message','Sorry! No Room ID Found.');
-        }
+        return redirect('admin/room')->with('message','Congratulations! New Room Has Been Updated Successfully.');
     }
 
-    // public function destroyImage(int $room_image_id)
-    // {
-    //     $roomImage = RoomImage::findOrFail($room_image_id);
-    //     if(File::exists($roomImage->image)){
-    //         File::delete($roomImage->image);
-    //     }
-    //     $roomImage->delete();
 
-    //     return redirect('admin/room')->with('message','Congratulations! New Room Has Been Updated Successfully.');
-    // }
+
+    public function deleteRecord($room_id)
+    {
+        $this->room_id = $room_id;
+    }
+
+    public function destroyRecord()
+    {
+        $room =  Facility::find($this->room_id);
+        // $path = 'uploads/facilities/'.$facility->image;
+        // if(File::exists($path)){
+        //     File::delete($path);
+        // }
+        // $facility->delete();
+        $room->is_delete = '0';
+        $room->update();
+        // session()->flash('message','Facility Has Been Deleted Successfully.');
+        return redirect('admin/room')->with('message','Room Has Been Deleted Successfully.');
+        $this->dispatchBrowserEvent('close-modal');
+    }
 }

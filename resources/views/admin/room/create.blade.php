@@ -149,9 +149,25 @@
                             </div>
 
                             <div class="tab-pane fade" id="room_facility" role="tabpanel">
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label text-right" for="roomViews">
+                                        {{ __('Room View') }}
+                                    </div>
+                                    <div class="col-sm-10">
+                                        @forelse ($views as $roomViewItem)
+                                        <div class="form-check mb-2">
+                                            <input type="checkbox" class="form-check-input" name="roomViews[]" value="{{ $roomViewItem->id }}">
+                                            <label class="form-check-label">{{ $roomViewItem->name }}</label>
+                                        </div>
+                                        @empty
+                                        <h6>No Facilities Found!</h6>
+                                        @endforelse
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="facilities">
-                                        {{ __('Facility') }}
+                                        {{ __('Room Facility') }}
                                     </div>
                                     <div class="col-sm-10">
                                         @forelse ($facilities as $facilityItem)

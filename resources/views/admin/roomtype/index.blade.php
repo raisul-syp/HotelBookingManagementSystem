@@ -28,70 +28,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Room Type Table</h4>
-                </div>
-                
-                <div class="card-body">
-                
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-responsive-sm">
-                                <thead class="text-center bg-primary text-white">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Slug</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-center">
-                                    @forelse ($roomtypes as $roomtype)
-                                    <tr>
-                                        <td>{{ $roomtype->id }}</td>
-                                        <td>{{ $roomtype->name }}</td>
-                                        <td>{{ $roomtype->slug }}</td>
-                                        <td>
-                                            @if ($roomtype->is_active == '1')
-                                                <span class="badge badge-success text-white">Active</span>
-                                            @else
-                                                <span class="badge badge-danger">Deactive</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <span>
-                                                <a href="{{ url('admin/roomtype/edit/'.$roomtype->id) }}" class="btn btn-square btn-outline-warning">Edit</a>
-                                            </span>
-                                            <span>
-                                                <a href="#" wire:click="deleteRecord({{ $roomtype->id }})" class="btn btn-square btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Delete</a>
-                                            </span>
-                                            @include('modal.admin.delete')
-                                        </td>
-                                    </tr>                        
-                                    @empty
-                                    <tr>
-                                        <td colspan="5">
-                                            <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
-                                        </td>
-                                    </tr>                        
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
-    
-                        <div class="pagination-section">
-                            {{-- {{ $rooms->links() }} --}}
-                        </div>
-                    </div>
-
-                    <div class="pagination-section">
-                        {{-- {{ $rooms->links() }} --}}
-                    </div>
-                </div>
-            </div>
-            {{-- <livewire:admin.room.index /> --}}
+            <livewire:admin.roomtype.index />
         </div>
     </div>
 </div>
