@@ -100,9 +100,10 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
                                     <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="is_active" name="is_active" {{ $roomtype->is_active == '1' ? 'checked':'' }}>
-                                        </div>
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" id="is_active" name="is_active"  {{ $roomtype->is_active == '1' ? 'checked':'' }}>
+                                            <span class="switch-toggle-slider"></span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>

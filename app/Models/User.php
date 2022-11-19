@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\UserImage;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -18,10 +19,26 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'is_active',
+        'is_delete',
+        'created_by',
+        'updated_by',
+        'role_as',
     ];
+
+    public function userImages()
+    {
+        return $this->hasOne(UserImage::class, 'user_id', 'id');
+    }
+
+    public function userDetails()
+    {
+        return $this->hasOne(UserInfo::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

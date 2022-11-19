@@ -133,26 +133,4 @@ class RoomController extends Controller
 
         return redirect('admin/room')->with('message','Congratulations! New Room Has Been Updated Successfully.');
     }
-
-
-
-    public function deleteRecord($room_id)
-    {
-        $this->room_id = $room_id;
-    }
-
-    public function destroyRecord()
-    {
-        $room =  Facility::find($this->room_id);
-        // $path = 'uploads/facilities/'.$facility->image;
-        // if(File::exists($path)){
-        //     File::delete($path);
-        // }
-        // $facility->delete();
-        $room->is_delete = '0';
-        $room->update();
-        // session()->flash('message','Facility Has Been Deleted Successfully.');
-        return redirect('admin/room')->with('message','Room Has Been Deleted Successfully.');
-        $this->dispatchBrowserEvent('close-modal');
-    }
 }

@@ -19,7 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/admin', [App\Http\Controllers\Auth\AdminAuthController::class, 'index'])->name('admin');
+
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -53,6 +55,16 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function (){
         Route::post('/', 'store');
         Route::get('/edit/{room}', 'edit');
         Route::put('/edit/{room}', 'update');
+    });
+
+    // User
+    Route::prefix('user')->controller(App\Http\Controllers\Admin\UserController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{user}', 'edit');
+        Route::put('/edit/{user}', 'update');
+        Route::get('/changepassword/{user}', 'changePassword');
     });
 });
 

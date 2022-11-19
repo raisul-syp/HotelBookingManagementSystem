@@ -114,7 +114,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="long_description">{{ __('Long Description') }}</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="long_description" name="long_description" rows="5" placeholder="Add Long Description...">{{ $room->long_description }}</textarea>
+                                        <textarea class="form-control" id="long_description" name="long_description">{{ $room->long_description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -126,7 +126,17 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="price">{{ __('Price') }}</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="price" name="price" value="{{ $room->price }}" placeholder="Add Price...">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-primary">
+                                                    <img src="{{ asset('admin/images/taka.png') }}" alt="">
+                                                </span>
+                                            </div>
+                                            <input type="number" class="form-control" id="price" name="price" value="{{ $room->price }}" placeholder="Add Price...">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text bg-primary">per night</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">

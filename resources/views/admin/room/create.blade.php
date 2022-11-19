@@ -123,7 +123,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="long_description">{{ __('Long Description') }}</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="long_description" name="long_description" rows="5" placeholder="Add Long Description..."></textarea>
+                                        <textarea class="form-control" id="long_description" name="long_description"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -135,15 +135,27 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="price">{{ __('Price') }}</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="price" name="price" placeholder="Add Price...">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-primary">
+                                                    <img src="{{ asset('admin/images/taka.png') }}" alt="">
+                                                </span>
+                                            </div>
+                                            <input type="number" class="form-control" id="price" name="price" placeholder="Add Price...">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text bg-primary">per night</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
                                     <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="is_active" name="is_active" checked>
-                                        </div>
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" id="is_active" name="is_active" checked>
+                                            <span class="switch-toggle-slider"></span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>

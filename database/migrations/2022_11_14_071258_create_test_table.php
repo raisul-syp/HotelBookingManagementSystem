@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDetailsToUsersTable extends Migration
+class CreateTestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddDetailsToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('role_as')->default('2')->comment('0=Admin, 1=Staff, 2=User');
+        Schema::create('test', function (Blueprint $table) {
+            $table->id();
+            $table->date('test_date');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddDetailsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role_as');
-        });
+        Schema::dropIfExists('test');
     }
 }

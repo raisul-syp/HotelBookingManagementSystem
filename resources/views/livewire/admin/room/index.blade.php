@@ -39,7 +39,7 @@
                             @forelse ($room->facilities as $facility)
                                 <div class="room-facilities" data-toggle="tooltip" data-placement="top" title="{{ $facility->name }}">
                                 @if ($facility->image != null)
-                                    <img src="{{ asset('uploads/facilities/'.$facility->image) }}" class="data-table-image">
+                                    <img src="{{ asset('uploads/facilities/'.$facility->image) }}">
                                 @endif
                                 </div>                                           
                             @empty

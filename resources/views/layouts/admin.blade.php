@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('admin/vendor/pg-calendar/css/pignose.calendar.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendor/chartist/css/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendor/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/vendor/summernote/summernote.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/vendor/dropify/dist/css/dropify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     @livewireStyles
@@ -55,6 +57,9 @@
     <script src="{{ asset('admin/vendor/moment/moment.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/pg-calendar/js/pignose.calendar.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/summernote/js/summernote.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/dropify/dist/js/dropify.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins-init/summernote-init.js') }}"></script>
     <script src="{{ asset('admin/icons/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin/js/dashboard/dashboard-2.js') }}"></script>
     @livewireScripts

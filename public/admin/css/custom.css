@@ -20,7 +20,12 @@
 }
 
 .data-table-image {
-    width: 50px;
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+    background: #343957;
+    border: 1px solid #343957;
+    border-radius: 3px;
 }
 
 .pagination-section .pagination {
@@ -85,6 +90,37 @@ body {
     width: 100%;
 }
 
+.input-group-text {
+    border-radius: 0 !important;
+}
+
+/* .note-editor.note-frame {
+    z-index: 1;
+} */
+
+.note-editor.note-frame .panel-heading {
+    background: #f0edff;    
+    border-bottom: 2px solid #b4a7ef;
+}
+
+.note-editor.note-frame .note-statusbar .note-resizebar {
+    background: #f0edff;    
+}
+
+.note-btn-group button:not(:disabled), .note-btn-group [type="button"]:not(:disabled), .note-btn-group [type="reset"]:not(:disabled), .note-btn-group [type="submit"]:not(:disabled) {
+    color: #343957;
+}
+
+.note-btn-group button:not(:disabled):hover, .note-btn-group [type="button"]:not(:disabled):hover, .note-btn-group [type="reset"]:not(:disabled):hover, .note-btn-group [type="submit"]:not(:disabled):hover {
+    color: #7981aa;
+}
+
+.user-list-img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #593bdb;
+    padding: 5px;
+}
 
 
 
